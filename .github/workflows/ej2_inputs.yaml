@@ -1,0 +1,22 @@
+name: Ej2 - Saludo con inputs
+on:
+  workflow_dispatch:
+    inputs:
+      nombre:
+        description: '¿Cómo te llamas?'
+        required: true
+      idioma:
+        description: 'Idioma del saludo'
+        type: choice
+        options: [es, en]
+        default: es
+jobs:
+  saludar:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Saludo en español
+        if: ${{ inputs.idioma == 'es' }}
+        run: echo "¡Hola, ${{ inputs.nombre }}!"
+      - name: Saludo en inglés
+        if: ${{ inputs.idioma == 'en' }}
+        run: echo "Hello, ${{ inputs.nombre }}!"
