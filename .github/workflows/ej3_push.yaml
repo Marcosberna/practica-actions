@@ -1,0 +1,14 @@
+name: Ej3 - Automático al hacer push
+on:
+  push:
+    branches: [main]
+jobs:
+  info:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Quién y dónde
+        run: |
+          echo "Push hecho por: ${{ github.actor }}"
+          echo "En la rama: ${{ github.ref_name }}"
+          echo "Evento: ${{ github.event_name }}"
+          echo "Mensaje del commit: ${{ github.event.head_commit.message }}"
